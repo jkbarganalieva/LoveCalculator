@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.geektech.lovecalculator.databinding.FragmentFirstBinding
+import com.geektech.lovecalculator.remote.LoveModel
 import com.geektech.lovecalculator.viewmodel.LoveViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -50,7 +51,7 @@ class FirstFragment : Fragment() {
                           loveModel ->
                       Log.e("ololo", "initClicker: $loveModel")
                       //findNavController().navigate(R.id.secondFragment)
-                      findNavController().navigate(R.id.secondFragment, bundleOf(MODEL_DATA to (it?.percentageTv )))
+                     findNavController().navigate(R.id.secondFragment, bundleOf(MODEL_DATA to (loveModel.percentage )))
                   }
             }
         }

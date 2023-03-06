@@ -16,6 +16,8 @@ class Pref(context: Context) {
         return preferences.getBoolean("userSeen", false)
     }
 
+
+
 }
 
 

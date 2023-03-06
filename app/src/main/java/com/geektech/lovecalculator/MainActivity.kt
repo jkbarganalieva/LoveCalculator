@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         navController = findNavController(R.id.nav_host_fragment)
 
-        if (pref.isShown()) {
+        if (!pref.isShown()) {
             pref.userSeenOnBoard()
             navController.navigate(R.id.onBoardingFragment)
         }
