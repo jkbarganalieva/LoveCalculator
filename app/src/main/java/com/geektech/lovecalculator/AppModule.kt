@@ -19,14 +19,15 @@ import javax.inject.Singleton
 class AppModule {
 
     @Provides
-    fun provideApi():LoveApi{
+    fun provideApi(): LoveApi {
 
         return Retrofit.Builder().baseUrl("https://love-calculator.p.rapidapi.com/")
             .addConverterFactory(GsonConverterFactory.create()).build().create(LoveApi::class.java)
     }
 
+    @Singleton
     @Provides
-    fun provideSharedPreferences(@ApplicationContext context: Context): SharedPreferences? {
-        return context.getSharedPreferences("settings",Context.MODE_PRIVATE) //context.getSharedPreferences("settings", Context.MODE_PRIVATE)//Pref(context)
+    fun providePrefs(@ApplicationContext context: Context): Pref {
+        return Pref(context)
     }
 }
