@@ -1,6 +1,5 @@
 package com.geektech.lovecalculator
 
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation.findNavController
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.geektech.lovecalculator.databinding.FragmentFirstBinding
 import com.geektech.lovecalculator.viewmodel.LoveViewModel
@@ -23,6 +22,7 @@ class FirstFragment : Fragment() {
 
     @Inject
     lateinit var preferences: Pref
+    private lateinit var navController: NavController
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,12 +39,16 @@ class FirstFragment : Fragment() {
 
 
     private fun initClicker() {
+
         with(binding) {
             calculateBtn.setOnClickListener {
+
               viewModel.getLiveLove(firstEt.text.toString(), secondEt.text.toString())
                   .observe(viewLifecycleOwner
-                  ) { loveModel ->
+                  ) {
+                          loveModel ->
                       Log.e("ololo", "initClicker: $loveModel")
+                      findNavController().navigate(R.id.secondFragment)
                   }
             }
         }

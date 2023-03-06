@@ -1,35 +1,37 @@
-
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.geektech.lovecalculator.R
 import com.geektech.lovecalculator.databinding.ItemOnboardingBinding
 import com.geektech.lovecalculator.remote.OnBoard
 
 class OnBoardingAdapter(private val onClick: () -> Unit) :
     Adapter<OnBoardingAdapter.OnBoardingViewHolder>() {
-    private val data = arrayListOf(
-        OnBoard(
-            "Минеральная вода",
-            "Укрепит иммунитет",
-            //R.raw.baby
-          "https://kajmak.ru/upload/iblock/139/139eb9ab535989633dbcca48ad5964b2.jpg"
-        ),
-        OnBoard(
-            "Тан",
-            "Когда болит голова)",
-            //R.raw.maintenance
-            "https://irecommend.ru/sites/default/files/product-images/85567/CcCT1fqzrEoHhPKrOLWysg.jpg"
-        ),
-        OnBoard(
-            "Шоро",
-            "Богат витаминами и минералами",
-            //R.raw.sand_clock
-//            "https://dastarkhan24.kz/upload/iblock/a1c/a1c81d923d3f6ec755690eb37c7b0985.jpg"
-        ),
-    )
+    private val data: ArrayList<OnBoard>
+        get() = arrayListOf(
+            OnBoard(
+                "LoveCalculator",
+                "вы можете узнать совместимоть",
+                R.drawable.love_calc_2
+            ),
+            OnBoard(
+                "LoveCalculator",
+                "введите ваше имя",
+                R.drawable.love_calc_2
+            ),
+            OnBoard(
+                "LoveCalculator",
+                "введите имя любимого/мой",
+                R.drawable.love_calc_2
+            ),
+            OnBoard(
+                "LoveCalculator",
+                "нажмите на кнопку",
+                R.drawable.love_calc_2
+            ),
+        )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardingViewHolder {
         return OnBoardingViewHolder(
@@ -48,11 +50,9 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
     inner class OnBoardingViewHolder(private val binding: ItemOnboardingBinding) :
         ViewHolder(binding.root) {
         fun bind(onBoard: OnBoard) {
-            //binding.image.setAnimation(onBoard.image!!)
             binding.tvTitle.text = onBoard.title
             binding.tvDesc.text = onBoard.desc
-
-           //binding.image.loadImage(onBoard.image.toString())
+            binding.image.setImageResource(onBoard.image!!)
             binding.btnStart.isVisible = adapterPosition == data.lastIndex
             binding.btnStart.setOnClickListener {
                 onClick()
