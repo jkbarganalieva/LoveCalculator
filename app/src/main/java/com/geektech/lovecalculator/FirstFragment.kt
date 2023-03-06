@@ -22,7 +22,7 @@ class FirstFragment : Fragment() {
     private val viewModel:LoveViewModel by viewModels()
 
     @Inject
-    lateinit var preferences: SharedPreferences
+    lateinit var preferences: Pref
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,14 +35,8 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initClicker()
-        if (!isUserSeen()) {
-            findNavController().navigate(R.id.onBoardingFragment)
-        }
-    }
+            }
 
-    private fun isUserSeen(): Boolean {
-        return preferences.getBoolean(SEEN_KEY, false)
-    }
 
     private fun initClicker() {
         with(binding) {
@@ -58,6 +52,6 @@ class FirstFragment : Fragment() {
 
     companion object {
         const val MODEL_DATA = "DATA"
-        const val SEEN_KEY = "userSeen"
+
     }
 }

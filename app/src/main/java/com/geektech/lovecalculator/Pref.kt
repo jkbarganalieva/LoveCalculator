@@ -12,9 +12,10 @@ class Pref(context: Context) {
         preferences.edit().putBoolean("userSeen", true).apply()
     }
 
-    fun isUserSeen(): Boolean {
+    fun isShown(): Boolean {
         return preferences.getBoolean("userSeen", false)
     }
+
 }
 
 
