@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var pref: Pref
-
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
 
@@ -27,6 +26,7 @@ class MainActivity : AppCompatActivity() {
             pref.userSeenOnBoard()
             navController.navigate(R.id.onBoardingFragment)
         }
+
     }
 }
 
