@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.geektech.lovecalculator.databinding.FragmentSecondBinding
 import com.geektech.lovecalculator.remote.LoveModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 @Suppress("DEPRECATION")
 class SecondFragment : Fragment() {
 

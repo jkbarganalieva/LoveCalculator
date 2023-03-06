@@ -2,21 +2,21 @@ package com.geektech.lovecalculator.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.geektech.lovecalculator.remote.LoveApi
 import com.geektech.lovecalculator.remote.LoveModel
-import com.geektech.lovecalculator.remote.LoveService
-import okhttp3.Callback
 import retrofit2.Call
 import retrofit2.Response
+import javax.inject.Inject
 
-class Repository {
+class Repository @Inject constructor(val api:LoveApi) {
 
     fun getLove(firstName:String, secondName:String ):MutableLiveData<LoveModel>{
         val liveLoveData=MutableLiveData<LoveModel>()
 
-        LoveService().api.calculatePercentage(firstName,secondName).enqueue(object :   retrofit2.Callback<LoveModel> {
+        api.calculatePercentage(firstName,secondName).enqueue(object :   retrofit2.Callback<LoveModel> {
             override fun onResponse(call: Call<LoveModel>, response: Response<LoveModel>) {
                 if (response.isSuccessful){
-                    liveLoveData.postValue(response.body())
+                     liveLoveData.postValue(response.body())
                 }
             }
 
