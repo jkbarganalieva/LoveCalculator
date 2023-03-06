@@ -28,15 +28,12 @@ class SecondFragment : Fragment() {
     @SuppressLint("")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val data = arguments?.getSerializable(FirstFragment.MODEL_DATA) as LoveModel
-        with(binding) {
-            firstTv.text = data.firstName
-            secondTv.text = data.secondName
-            percentageTv.text = data.percentage + "%"
-            messageTv.text = data.result
-            againBtn.setOnClickListener {
-                findNavController().navigateUp()
+        //val data = arguments?.getSerializable(FirstFragment.MODEL_DATA) as LoveModel
+
+                var result = arguments?.getString(FirstFragment.MODEL_DATA )as LoveModel
+                binding.percentageTv.text = result.toString()
+                binding.againBtn.setOnClickListener  { findNavController().navigateUp() }
             }
         }
-    }
-}
+//    }
+//}
