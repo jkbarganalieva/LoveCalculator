@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="10dp"
+    >
+    <TextView
+        android:id="@+id/fname_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:text="fname"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/sname_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:text="sname"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/percentage_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="36sp"
+        android:textColor="@color/black"
+        android:text="res"
+        android:textStyle="bold"
+        />
+
+
+
+</LinearLayout>

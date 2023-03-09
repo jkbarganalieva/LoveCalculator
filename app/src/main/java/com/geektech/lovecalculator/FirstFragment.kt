@@ -1,5 +1,6 @@
 package com.geektech.lovecalculator
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -20,7 +21,7 @@ import javax.inject.Inject
 class FirstFragment : Fragment() {
     private lateinit var binding: FragmentFirstBinding
 
-    private val viewModel:LoveViewModel by viewModels()
+    private val viewModel: LoveViewModel by viewModels()
 
     @Inject
     lateinit var preferences: Pref
@@ -28,7 +29,7 @@ class FirstFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
@@ -37,22 +38,27 @@ class FirstFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initClicker()
-            }
+    }
 
 
     private fun initClicker() {
 
         with(binding) {
+            historyBtn.setOnClickListener{
+                findNavController().navigate(R.id.historyFragment)
+            }
+
             calculateBtn.setOnClickListener {
 
-              viewModel.getLiveLove(firstEt.text.toString(), secondEt.text.toString())
-                  .observe(viewLifecycleOwner
-                  ) {
-                          loveModel ->
-                      Log.e("ololo", "initClicker: $loveModel")
-                      //findNavController().navigate(R.id.secondFragment)
-                     findNavController().navigate(R.id.secondFragment, bundleOf(MODEL_DATA to (loveModel.percentage )))
-                  }
+                viewModel.getLiveLove(firstEt.text.toString(), secondEt.text.toString())
+                    .observe(viewLifecycleOwner
+                    ) { loveModel ->
+                        Log.e("ololo", "initClicker: $loveModel")
+                        //findNavController().navigate(R.id.secondFragment)
+                        findNavController().navigate(R.id.secondFragment,
+                            bundleOf(MODEL_DATA to (loveModel.percentage)))
+                        App.appDatabase.loveDao().insert(loveModel)
+                    }
             }
         }
     }

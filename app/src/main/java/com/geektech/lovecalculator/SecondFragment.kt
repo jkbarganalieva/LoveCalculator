@@ -19,7 +19,7 @@ class SecondFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         binding = FragmentSecondBinding.inflate(inflater, container, false)
         return binding.root
@@ -29,8 +29,8 @@ class SecondFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-                var result = arguments?.getString(FirstFragment.MODEL_DATA )
-                binding.percentageTv.text = result.toString()
-                binding.againBtn.setOnClickListener  { findNavController().navigateUp() }
-            }
-        }
+        var result = arguments?.getString(FirstFragment.MODEL_DATA)
+        binding.percentageTv.text = result.toString()
+        binding.againBtn.setOnClickListener { findNavController().navigateUp() }
+    }
+}
