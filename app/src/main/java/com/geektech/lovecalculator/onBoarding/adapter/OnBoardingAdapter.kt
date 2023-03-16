@@ -14,22 +14,26 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
             OnBoard(
                 "LoveCalculator",
                 "вы можете узнать совместимоть",
-                R.drawable.love_calc_2
+                R.raw.baby
+                //R.drawable.love_calc_2
             ),
             OnBoard(
                 "LoveCalculator",
                 "введите ваше имя",
-                R.drawable.love_calc_2
+                R.raw.maintenance
+                //R.drawable.love_calc_2
             ),
             OnBoard(
                 "LoveCalculator",
                 "введите имя любимого/мой",
-                R.drawable.love_calc_2
+                R.raw.sand_clock
+                // R.drawable.love_calc_2
             ),
             OnBoard(
                 "LoveCalculator",
                 "нажмите на кнопку",
-                R.drawable.love_calc_2
+                R.raw.maintenance
+                //R.drawable.love_calc_2
             ),
         )
 
@@ -52,7 +56,8 @@ class OnBoardingAdapter(private val onClick: () -> Unit) :
         fun bind(onBoard: OnBoard) {
             binding.tvTitle.text = onBoard.title
             binding.tvDesc.text = onBoard.desc
-            binding.image.setImageResource(onBoard.image!!)
+            binding.image.setAnimation(onBoard.image!!)
+            // binding.image.setImageResource(onBoard.image!!)
             binding.btnStart.isVisible = adapterPosition == data.lastIndex
             binding.btnStart.setOnClickListener {
                 onClick()
